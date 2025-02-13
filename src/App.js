@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import Todo from './todos.js'
 
@@ -7,13 +7,15 @@ import { FaCheck } from "react-icons/fa6";
 
 function App() {
 
+  const isFirstLoad = useRef(true);
+
   const [flag, setFlag] = useState(true);
 
-  function handleTodo(){
+  function handleTodo() {
     setFlag(true);
   }
 
-  function handleComplete(){
+  function handleComplete() {
     setFlag(false);
   }
 
@@ -31,14 +33,14 @@ function App() {
   function handleDelete(listObjId) {
     setTaskList(taskList.filter((taskObj) => taskObj.id !== listObjId));
   }
-  
+
   function handleDelete2(listObjId) {
     setCompletedTaskList(completedTaskList.filter((completedTaskObj) => completedTaskObj.id !== listObjId));
   }
 
   function handleCheck(listObjId) {
-    const completedTask = taskList.find( task => task.id === listObjId);
-    
+    const completedTask = taskList.find(task => task.id === listObjId);
+
     setCompletedTaskList([...completedTaskList, completedTask]);
     setTaskList(taskList.filter((taskObj) => taskObj.id !== listObjId));
   }
@@ -47,22 +49,18 @@ function App() {
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('saveTodos'));
     const savedCompletedTodos = JSON.parse(localStorage.getItem('saveCompletedTodos'));
-    if(savedCompletedTodos){
-      setCompletedTaskList(savedCompletedTodos);
-    }
-    if(savedTodos){
-      setTaskList(savedTodos);
-    }
+    setCompletedTaskList(savedCompletedTodos);
+    setTaskList(savedTodos);
   }, [])
 
   // saving todos to localstorage 
   useEffect(() => {
-    if(taskList.length > 0) {
-      localStorage.setItem('saveTodos', JSON.stringify(taskList));
+    if (isFirstLoad.current) {
+      isFirstLoad.current = false;
+      return;
     }
-    if(completedTaskList.length > 0) {
-      localStorage.setItem('saveCompletedTodos', JSON.stringify(completedTaskList));
-    }
+    localStorage.setItem('saveTodos', JSON.stringify(taskList));
+    localStorage.setItem('saveCompletedTodos', JSON.stringify(completedTaskList));
   }, [taskList, completedTaskList]);
 
   function handleSubmit(e) {
@@ -122,8 +120,8 @@ function App() {
         <hr />
         <div className="tasks">
           <div className="two-btn">
-            <button className={ flag ? 'todoClicked' : 'todo-btn'} onClick={handleTodo}>Todo</button>
-            <button className={ flag ? 'completed-btn' : 'completeClicked'} onClick={handleComplete}>Completed tasks</button>
+            <button className={flag ? 'todoClicked' : 'todo-btn'} onClick={handleTodo}>Todo</button>
+            <button className={flag ? 'completed-btn' : 'completeClicked'} onClick={handleComplete}>Completed tasks</button>
           </div>
           {flag ?
             (taskList.length !== 0 ? taskList.map((listObj) => {
