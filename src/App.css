@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+  background-color: rgb(42, 42, 42);
+  color: white;
+  min-height: 100vh;
+  border: 1px solid rgb(42, 42, 42);
+  padding: 10px;
+}
+
+.form-container {
+  width: 60%;
+  background-color: rgb(77, 77, 77);
+  padding: 20px;
+  margin-bottom: 30px;
+  transition: width 0.3s ease-in-out;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+form label {
+  line-height: 0;
+  /* there was a gap between input and label after using line height, label height became 0, without changing the original gap but it overall decreased the distance between them */
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  height: 30px;
+  width: 300px;
+  font-size: 1.2rem;
+  transition: width 0.3s ease-in-out;
+  /* outline: none; */
+}
+
+.input-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-btn {
+  color: black;
+  background-color: #20d761;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  box-shadow: 0px 3px 5px black;
+}
+
+.two-btn {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.todo-btn {
+  padding: 0.5rem 1rem;
+  background-color: #20d761;
+  border: none;
+}
+
+.todo-btn:hover {
+  box-shadow: 0px 3px 5px black;
+}
+
+.todoClicked {
+  padding: 0.5rem 1rem;
+  background-color: #20d761;
+  border: 1px solid white;
+}
+
+.completed-btn {
+  padding: 0.5rem 1rem;
+  background-color: rgb(134 134 134);
+  ;
+  border: none;
+}
+
+.completed-btn:hover {
+  box-shadow: 0px 3px 5px black;
+}
+
+.completeClicked {
+  padding: 0.5rem 1rem;
+  background-color: rgb(134 134 134);
+  ;
+  border: 1px solid white;
+}
+
+.tasks {
+  margin-top: 30px;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(93, 93, 93);
+  padding: 20px;
+  margin-bottom: 15px;
+  gap: 20px;
+}
+
+.todo-text {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+
+.todo-text h2 {
+  color: #20d761;
+}
+
+.todo-text-desc {
+  align-items: start;
+}
+
+.todo-icons {
+  display: flex;
+}
+
+.icon {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.check-icon {
+  margin-left: 5px;
+  color: #20d761;
+}
+
+@media (max-width: 1400px) {
+  .form-container {
+    width: 65%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .form-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .form-container {
+    width: 75%;
+  }
+  input {
+    height: 27px;
+    width: 250px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .form-container {
+    width: 80%;
+  }
+  h1 {
+    margin: 10px;
+  }
+  input {
+    height: 25px;
+    width: 250px;
+    font-size: 1.1rem;
+  }
+  form {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    width: 85%;
+  }
+  .todo-icons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .form-container {
+    width: 90%;
+  }
+}
+
+
+
+/* 
+hackerrank color theme
+    background: #0e141e; black color 
+    #20d761 green color
+    #63646f light black
+    #797888 more light than above
+*/
