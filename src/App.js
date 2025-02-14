@@ -78,7 +78,7 @@ function App() {
         description: newData.description
       };
 
-      setTaskList(taskList => {
+      setTaskList(() => {
         const updatedList = [...taskList, newTask];
         console.log(updatedList);
         setNewData({ title: "", description: "" });
