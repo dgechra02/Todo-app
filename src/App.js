@@ -91,7 +91,7 @@ function App() {
   // ***important 
   /* React State Updates Are Asynchronous
 
-  When you call setTask([...task, newData]), React does not update the state immediately. 
+  When you call setTask([...task, newData]), React does not update the state immediately.
   Instead, it schedules the state update and re-renders the component asynchronously.
 
   So, when you log console.log(task); immediately after calling setTask(), it still logs the old state because the state hasn't updated yet. 
@@ -124,7 +124,7 @@ function App() {
             <button className={flag ? 'completed-btn' : 'completeClicked'} onClick={handleComplete}>Completed tasks</button>
           </div>
           {flag ?
-            (taskList.length != 0 ? taskList.map((listObj) => {
+            ((taskList?.length || 0) != 0 ? taskList.map((listObj) => {
               return (
                 <>
                   <div className="todo-container">
@@ -140,7 +140,7 @@ function App() {
                 </>
               )
             }) : "")
-            : completedTaskList.length != 0 // compltedTask != [] this is not working, which will always return false. This is because comparing arrays using != or == checks for reference equality, not content equality. Even if two arrays have the same elements, they are considered different objects in memory. >>> but true bhi return ho rha tha mere
+            : (completedTaskList?.length || 0) != 0 // compltedTask != [] this is not working, which will always return false. This is because comparing arrays using != or == checks for reference equality, not content equality. Even if two arrays have the same elements, they are considered different objects in memory. >>> but true bhi return ho rha tha mere
               ? (completedTaskList.map((listObj) => {
                 return (
                   <>
