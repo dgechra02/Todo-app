@@ -47,8 +47,8 @@ function App() {
 
   // loads todo from local storage
   useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem('saveTodos'));
-    const savedCompletedTodos = JSON.parse(localStorage.getItem('saveCompletedTodos'));
+    const savedTodos = JSON.parse(localStorage.getItem('saveTodos')) || [];
+    const savedCompletedTodos = JSON.parse(localStorage.getItem('saveCompletedTodos')) || [];
     setCompletedTaskList(savedCompletedTodos);
     setTaskList(savedTodos);
   }, [])
